@@ -1,8 +1,8 @@
 package com.baec.vocabularyquiz.di;
 
-import com.baec.vocabularyquiz.LoginViewModel;
-import com.baec.vocabularyquiz.UserRepository;
-import com.baec.vocabularyquiz.UserRepositoryImpl;
+import com.baec.vocabularyquiz.login.LoginViewModel;
+import com.baec.vocabularyquiz.repository.UserRepository;
+import com.baec.vocabularyquiz.repository.UserRepositoryImpl;
 
 import javax.inject.Singleton;
 

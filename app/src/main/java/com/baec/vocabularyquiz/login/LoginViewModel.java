@@ -1,4 +1,4 @@
-package com.baec.vocabularyquiz;
+package com.baec.vocabularyquiz.login;
 
 import static com.baec.vocabularyquiz.util.InputValidator.isPasswordValid;
 import static com.baec.vocabularyquiz.util.InputValidator.isUsernameValid;
@@ -7,6 +7,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.baec.vocabularyquiz.R;
+import com.baec.vocabularyquiz.repository.UserRepository;
+import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 import com.baec.vocabularyquiz.model.User;
 import com.baec.vocabularyquiz.util.Result;
 

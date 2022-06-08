@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.baec.vocabularyquiz.LoginFragment"
+        android:name="com.baec.vocabularyquiz.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login"/>
 </navigation>

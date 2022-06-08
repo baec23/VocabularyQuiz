@@ -1,4 +1,4 @@
-package com.baec.vocabularyquiz;
+package com.baec.vocabularyquiz.repository;
 
 import com.baec.vocabularyquiz.model.User;
 import com.baec.vocabularyquiz.util.Result;

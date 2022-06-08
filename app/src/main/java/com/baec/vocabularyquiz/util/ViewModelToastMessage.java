@@ -1,4 +1,4 @@
-package com.baec.vocabularyquiz;
+package com.baec.vocabularyquiz.util;
 
 public class ViewModelToastMessage {
     private Type type;

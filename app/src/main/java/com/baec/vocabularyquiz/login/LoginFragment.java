@@ -1,4 +1,4 @@
-package com.baec.vocabularyquiz;
+package com.baec.vocabularyquiz.login;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
+import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 import com.baec.vocabularyquiz.databinding.FragmentLoginBinding;
 
 import javax.inject.Inject;
@@ -48,12 +49,7 @@ public class LoginFragment extends Fragment {
         et_password.addTextChangedListener(getPasswordTextWatcher());
 
         //region Observers
-        loginViewModel.getValidationOkay().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean isValidationOkay) {
-                bt_login.setEnabled(isValidationOkay);
-            }
-        });
+        loginViewModel.getValidationOkay().observe(getViewLifecycleOwner(), isValidationOkay -> bt_login.setEnabled(isValidationOkay));
 
         loginViewModel.getUsernameErrorMessageStringId().observe(getViewLifecycleOwner(), id -> {
             if(id == -1)
