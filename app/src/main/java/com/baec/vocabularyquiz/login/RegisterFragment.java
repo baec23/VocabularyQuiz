@@ -3,7 +3,6 @@ package com.baec.vocabularyquiz.login;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,69 +15,80 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavHostController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.baec.vocabularyquiz.R;
-import com.baec.vocabularyquiz.databinding.FragmentLoginBinding;
+import com.baec.vocabularyquiz.databinding.FragmentRegisterBinding;
 import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 
-import dagger.hilt.android.AndroidEntryPoint;
+public class RegisterFragment extends Fragment {
 
-@AndroidEntryPoint
-public class LoginFragment extends Fragment {
-
-    LoginViewModel loginViewModel;
+    private RegisterViewModel registerViewModel;
+    private FragmentRegisterBinding binding;
     private NavController navController;
-    private FragmentLoginBinding binding;
 
     private EditText et_username;
     private EditText et_password;
-    private Button bt_login;
+    private EditText et_password2;
     private Button bt_register;
 
-    public static LoginFragment newInstance() {
-        return new LoginFragment();
+    public static RegisterFragment newInstance() {
+        return new RegisterFragment();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+        registerViewModel = new ViewModelProvider(requireActivity()).get(RegisterViewModel.class);
         navController = NavHostFragment.findNavController(this);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = FragmentLoginBinding.inflate(inflater, container, false);
-
-        et_username = binding.loginEtUsername;
-        et_password = binding.loginEtPassword;
-        bt_login = binding.loginBtLogin;
-        bt_register = binding.loginBtRegister;
+        binding = FragmentRegisterBinding.inflate(inflater, container, false);
+        et_username = binding.registerEtUsername;
+        et_password = binding.registerEtPassword;
+        et_password2 = binding.registerEtPassword2;
+        bt_register = binding.registerBtRegister;
 
         et_username.addTextChangedListener(getUsernameTextWatcher());
         et_password.addTextChangedListener(getPasswordTextWatcher());
+        et_password2.addTextChangedListener(getPassword2TextWatcher());
 
         //region Observers
-        loginViewModel.getValidationOkay().observe(getViewLifecycleOwner(), isValidationOkay -> bt_login.setEnabled(isValidationOkay));
+        registerViewModel.getRegistrationStatus().observe(getViewLifecycleOwner(), registrationStatus -> {
+            if (registrationStatus.getStatus() == RegistrationStatus.Status.SUCCESS) {
+                navController.navigate(R.id.action_registerFragment_to_loginFragment);
+            } else {
 
-        loginViewModel.getUsernameErrorMessageStringId().observe(getViewLifecycleOwner(), id -> {
+            }
+        });
+
+        registerViewModel.getValidationOkay().observe(getViewLifecycleOwner(), isValidationOkay -> bt_register.setEnabled(isValidationOkay));
+
+        registerViewModel.getUsernameErrorMessageStringId().observe(getViewLifecycleOwner(), id -> {
             if (id == -1)
                 et_username.setError(null);
             else
                 et_username.setError(getString(id));
         });
 
-        loginViewModel.getPasswordErrorMessageStringId().observe(getViewLifecycleOwner(), id -> {
+        registerViewModel.getPasswordErrorMessageStringId().observe(getViewLifecycleOwner(), id -> {
             if (id == -1)
                 et_password.setError(null);
             else
                 et_password.setError(getString(id));
         });
 
-        loginViewModel.getToastMessage().observe(getViewLifecycleOwner(), viewModelToastMessage -> {
+        registerViewModel.getPassword2ErrorMessageStringId().observe(getViewLifecycleOwner(), id -> {
+            if (id == -1)
+                et_password2.setError(null);
+            else
+                et_password2.setError(getString(id));
+        });
+
+        registerViewModel.getToastMessage().observe(getViewLifecycleOwner(), viewModelToastMessage -> {
             if (viewModelToastMessage.getType() == ViewModelToastMessage.Type.ERROR)
                 Toast.makeText(getContext(), getString(viewModelToastMessage.getMessageStringId()), Toast.LENGTH_LONG).show();
             else
@@ -87,10 +97,7 @@ public class LoginFragment extends Fragment {
         //endregion
 
         //region OnClickListeners
-        bt_login.setOnClickListener(v -> loginViewModel.onLoginButtonPressed());
-        bt_register.setOnClickListener(v -> {
-            navController.navigate(R.id.action_loginFragment_to_registerFragment);
-        });
+        bt_register.setOnClickListener(v -> registerViewModel.onRegisterButtonPressed());
         //endregion
 
         return binding.getRoot();
@@ -108,7 +115,7 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                loginViewModel.onUsernameTextChanged(s.toString());
+                registerViewModel.onUsernameTextChanged(s.toString());
             }
         };
     }
@@ -125,7 +132,24 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                loginViewModel.onPasswordTextChanged(s.toString());
+                registerViewModel.onPasswordTextChanged(s.toString());
+            }
+        };
+    }
+
+    private TextWatcher getPassword2TextWatcher() {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                registerViewModel.onPassword2TextChanged(s.toString());
             }
         };
     }

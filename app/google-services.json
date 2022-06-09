@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452470574842",
+    "project_id": "vocabquiz-7d7b7",
+    "storage_bucket": "vocabquiz-7d7b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452470574842:android:c9425400320f143aa50343",
+        "android_client_info": {
+          "package_name": "com.baec.vocabularyquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452470574842-bilt6a2bts4vi1f6g3jpou3u9kcnucob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxkCSJ4vORSnzwG1JRlIDLxBUTtBId3N4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452470574842-bilt6a2bts4vi1f6g3jpou3u9kcnucob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

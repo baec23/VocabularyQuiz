@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/login_et_username"
+        android:id="@+id/register_et_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -16,15 +16,14 @@
         android:hint="@string/hint_username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/login_et_password"
+        app:layout_constraintBottom_toTopOf="@+id/register_et_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <EditText
-        android:id="@+id/login_et_password"
+        android:id="@+id/register_et_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -34,48 +33,61 @@
         android:hint="@string/hint_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/login_et_username"
+        app:layout_constraintBottom_toTopOf="@+id/register_et_password2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintTop_toBottomOf="@id/register_et_username"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/register_et_password2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/hint_password2"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/register_bt_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_et_password"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Button
-        android:id="@+id/login_bt_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/login_bt_register"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_et_password" />
-
-    <TextView
-        android:id="@+id/login_tv_usernameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_username"
-        app:layout_constraintBottom_toTopOf="@+id/login_et_username"
-        app:layout_constraintStart_toStartOf="@+id/login_et_username" />
-
-    <TextView
-        android:id="@+id/login_tv_passwordLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_password"
-        app:layout_constraintBottom_toTopOf="@+id/login_et_password"
-        app:layout_constraintStart_toStartOf="@+id/login_et_password" />
-
-    <Button
-        android:id="@+id/login_bt_register"
+        android:id="@+id/register_bt_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_register"
-        app:layout_constraintBottom_toBottomOf="@+id/login_bt_login"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/login_bt_login"
-        app:layout_constraintTop_toTopOf="@+id/login_bt_login" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/register_tv_usernameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_username"
+        app:layout_constraintBottom_toTopOf="@+id/register_et_username"
+        app:layout_constraintStart_toStartOf="@+id/register_et_username" />
+
+    <TextView
+        android:id="@+id/register_tv_passwordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_password"
+        app:layout_constraintBottom_toTopOf="@+id/register_et_password"
+        app:layout_constraintStart_toStartOf="@+id/register_et_password" />
+
+    <TextView
+        android:id="@+id/register_tv_password2Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_password2"
+        app:layout_constraintBottom_toTopOf="@+id/register_et_password2"
+        app:layout_constraintStart_toStartOf="@+id/register_et_password2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

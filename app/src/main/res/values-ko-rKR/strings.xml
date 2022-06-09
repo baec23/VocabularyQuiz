@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">보카 테스트</string>
+
+    <!--Label-->
     <string name="label_username">유저ID</string>
     <string name="label_password">비밀번호</string>
+    <string name="label_password2">비밀번호 다시</string>
+    <!--Button-->
     <string name="button_login">로그인</string>
+    <string name="button_register">신규 가입</string>
+    <!--Hint-->
     <string name="hint_username">유저ID</string>
     <string name="hint_password">비밀번호</string>
+    <string name="hint_password2">비밀번호 다시</string>
+    <!--Message-->
     <string name="message_loginSuccessful">로그인 성공!</string>
     <string name="message_loginFailed">로그인 실패!</string>
-    <string name="errorMessage_usernameValidation">유저ID는 4글자에서 30글자 사이입니다.\n우저ID에 특수문자는 사용 불가입니다.</string>
+    <!--Error Message-->
+    <string name="errorMessage_usernameValidation">유저ID는 이메일 주소이어야 합니다.</string>
     <string name="errorMessage_passwordValidation">비밀번호는 8글자에서 30글자 사이입니다.</string>
+    <string name="errorMessage_password2Validation">비밀번호가 같지 않습니다</string>
+    <string name="message_registrationSuccessful">가입 선공</string>
+    <string name="errorMessage_registration">가입 실패</string>
+
 </resources>

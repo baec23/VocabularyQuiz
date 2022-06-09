@@ -4,5 +4,10 @@ import com.baec.vocabularyquiz.model.User;
 import com.baec.vocabularyquiz.util.Result;
 
 public interface UserRepository {
-    Result<User> tryLogin(String username, String password);
+    void tryLogin(String username, String password, RepositoryCallback<Result<User>> callback);
+    void tryRegister(String username, String password, RepositoryCallback<Result<User>> callback);
+
+    interface RepositoryCallback<T>{
+        void onComplete(T result);
+    }
 }

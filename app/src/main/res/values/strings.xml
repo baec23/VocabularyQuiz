@@ -1,12 +1,25 @@
 <resources>
     <string name="app_name">VocabularyQuiz</string>
+
+    <!--Label-->
     <string name="label_username">Username</string>
     <string name="label_password">Password</string>
+    <string name="label_password2">Password Again</string>
+    <!--Button-->
     <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
+    <!--Hint-->
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
+    <string name="hint_password2">Password Again</string>
+    <!--Message-->
     <string name="message_loginSuccessful">Login Successful!</string>
     <string name="message_loginFailed">Login Failed!</string>
-    <string name="errorMessage_usernameValidation">Username must be between 4 and 30 characters.\nUsername cannot contain special characters.</string>
+    <!--Error Message-->
+    <string name="errorMessage_usernameValidation">Username must be an e-mail.</string>
     <string name="errorMessage_passwordValidation">Password must be between 8 and 30 characters.</string>
+    <string name="errorMessage_password2Validation">Password does not match!</string>
+    <string name="message_registrationSuccessful">Registration Successful</string>
+    <string name="errorMessage_registration">Registration Failed</string>
+
 </resources>

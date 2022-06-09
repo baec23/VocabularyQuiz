@@ -3,45 +3,42 @@ package com.baec.vocabularyquiz.login;
 import static com.baec.vocabularyquiz.util.InputValidator.isPasswordValid;
 import static com.baec.vocabularyquiz.util.InputValidator.isUsernameValid;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.baec.vocabularyquiz.R;
 import com.baec.vocabularyquiz.repository.UserRepository;
 import com.baec.vocabularyquiz.util.Result;
-import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-public class LoginViewModel extends ToastMessageViewModel {
+public class RegisterViewModel extends ToastMessageViewModel {
     private UserRepository userRepository;
 
+    private MutableLiveData<RegistrationStatus> registrationStatus = new MutableLiveData<>();
     private MutableLiveData<Integer> usernameErrorMessageStringId = new MutableLiveData<>();
     private MutableLiveData<Integer> passwordErrorMessageStringId = new MutableLiveData<>();
+    private MutableLiveData<Integer> password2ErrorMessageStringId = new MutableLiveData<>();
     private MutableLiveData<Boolean> validationOkay = new MutableLiveData<>(false);
 
     private String username = "";
     private String password = "";
+    private String password2 = "";
 
     @Inject
-    public LoginViewModel(UserRepository userRepository) {
+    public RegisterViewModel(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public void onLoginButtonPressed() {
-        userRepository.tryLogin(username, password, callbackResult -> {
-            if (callbackResult instanceof Result.Success) {
-                Log.d("DEBUG", "LOGIN SUCCESS");
-                toastMessage.postValue(new ViewModelToastMessage(ViewModelToastMessage.Type.MESSAGE, R.string.message_loginSuccessful));
+    public void onRegisterButtonPressed() {
+        userRepository.tryRegister(username, password, resultCallback -> {
+            if (resultCallback instanceof Result.Success) {
+                registrationStatus.setValue(new RegistrationStatus(RegistrationStatus.Status.SUCCESS, R.string.message_registrationSuccessful));
             } else {
-                Log.d("DEBUG", "LOGIN FAIL");
-                toastMessage.postValue(new ViewModelToastMessage(ViewModelToastMessage.Type.ERROR, R.string.message_loginFailed));
+                registrationStatus.setValue(new RegistrationStatus(RegistrationStatus.Status.SUCCESS, R.string.errorMessage_registration));
             }
         });
     }
@@ -64,8 +61,17 @@ public class LoginViewModel extends ToastMessageViewModel {
         checkValidationOkay();
     }
 
+    public void onPassword2TextChanged(String changedText) {
+        password2 = changedText;
+        if (password2.length() > 0 && !password.equals(password2))
+            password2ErrorMessageStringId.postValue(R.string.errorMessage_password2Validation);
+        else
+            password2ErrorMessageStringId.postValue(-1);
+        checkValidationOkay();
+    }
+
     private void checkValidationOkay() {
-        if (isUsernameValid(username) && isPasswordValid(password)) {
+        if (isUsernameValid(username) && isPasswordValid(password) && password.equals(password2)) {
             validationOkay.postValue(true);
         } else {
             validationOkay.postValue(false);
@@ -80,7 +86,15 @@ public class LoginViewModel extends ToastMessageViewModel {
         return passwordErrorMessageStringId;
     }
 
+    public LiveData<Integer> getPassword2ErrorMessageStringId() {
+        return password2ErrorMessageStringId;
+    }
+
     public LiveData<Boolean> getValidationOkay() {
         return validationOkay;
+    }
+
+    public LiveData<RegistrationStatus> getRegistrationStatus() {
+        return registrationStatus;
     }
 }
