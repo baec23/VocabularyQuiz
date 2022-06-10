@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.baec.vocabularyquiz.R;
 import com.baec.vocabularyquiz.repository.UserRepository;
 import com.baec.vocabularyquiz.util.Result;
+import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 
 import javax.inject.Inject;
 
@@ -37,8 +38,10 @@ public class RegisterViewModel extends ToastMessageViewModel {
         userRepository.tryRegister(username, password, resultCallback -> {
             if (resultCallback instanceof Result.Success) {
                 registrationStatus.setValue(new RegistrationStatus(RegistrationStatus.Status.SUCCESS, R.string.message_registrationSuccessful));
+                toastMessage.setValue(new ViewModelToastMessage(ViewModelToastMessage.Type.MESSAGE, R.string.message_registrationSuccessful));
             } else {
-                registrationStatus.setValue(new RegistrationStatus(RegistrationStatus.Status.SUCCESS, R.string.errorMessage_registration));
+                registrationStatus.setValue(new RegistrationStatus(RegistrationStatus.Status.ERROR, R.string.errorMessage_registration));
+                toastMessage.setValue(new ViewModelToastMessage(ViewModelToastMessage.Type.ERROR, R.string.errorMessage_registration));
             }
         });
     }

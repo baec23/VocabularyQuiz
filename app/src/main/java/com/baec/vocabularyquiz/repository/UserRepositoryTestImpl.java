@@ -4,13 +4,24 @@ import com.baec.vocabularyquiz.model.User;
 import com.baec.vocabularyquiz.util.Result;
 
 public class UserRepositoryTestImpl implements UserRepository {
-    @Override
-    public void tryLogin(String username, String password, RepositoryCallback<Result<User>> callback) {
+
+    public UserRepositoryTestImpl() {
 
     }
 
     @Override
-    public void tryRegister(String username, String password, RepositoryCallback<Result<User>> callback) {
+    public void tryLogin(String username, String password, RepositoryCallback<Result<User>> callback) {
+        if (username.equals("test@test.com"))
+            callback.onComplete(new Result.Success<User>(new User("a", "test@test.com")));
+        else
+            callback.onComplete(new Result.Error(new Exception("Failed")));
+    }
 
+    @Override
+    public void tryRegister(String username, String password, RepositoryCallback<Result<User>> callback) {
+        if (username.equals("test@test.com"))
+            callback.onComplete(new Result.Success<User>(new User("a", "test@test.com")));
+        else
+            callback.onComplete(new Result.Error(new Exception("Failed")));
     }
 }

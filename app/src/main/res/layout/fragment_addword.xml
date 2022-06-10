@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.ui.addword.AddWordFragment">
+
+    <EditText
+        android:id="@+id/addWord_et_word"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_quizWord"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/addWord_et_answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/addWord_et_answer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_quizWordAnswer"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/addWord_bt_addWord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addWord_et_word" />
+
+    <Button
+        android:id="@+id/addWord_bt_addWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:text="@string/button_addWord"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/addWord_tv_wordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_quizWord"
+        app:layout_constraintBottom_toTopOf="@+id/addWord_et_word"
+        app:layout_constraintStart_toStartOf="@+id/addWord_et_word" />
+
+    <TextView
+        android:id="@+id/addWord_tv_answerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_quizWordAnswer"
+        app:layout_constraintBottom_toTopOf="@+id/addWord_et_answer"
+        app:layout_constraintStart_toStartOf="@+id/addWord_et_answer" />
+</androidx.constraintlayout.widget.ConstraintLayout>

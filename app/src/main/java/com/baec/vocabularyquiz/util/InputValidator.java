@@ -13,7 +13,7 @@ public class InputValidator {
     }
 
     public static boolean isPasswordValid(String password) {
-        if (password.length() <= 8 || password.length() >= 30)
+        if (password.length() < 8 || password.length() > 30)
             return false;
         return true;
     }

@@ -1,11 +1,14 @@
 package com.baec.vocabularyquiz.di;
 
-import com.baec.vocabularyquiz.login.LoginViewModel;
+import com.baec.vocabularyquiz.repository.QuizWordRepository;
+import com.baec.vocabularyquiz.repository.QuizWordRepositoryImpl;
 import com.baec.vocabularyquiz.repository.UserRepository;
 import com.baec.vocabularyquiz.repository.UserRepositoryImpl;
+import com.baec.vocabularyquiz.repository.UserRepositoryTestImpl;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -19,8 +22,14 @@ public class AppModule {
 
     @Singleton
     @Provides
-    public UserRepository provideUserRepository() {
-        return new UserRepositoryImpl();
+    public UserRepository provideUserRepository(FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore) {
+        return new UserRepositoryImpl(firebaseAuth, firebaseFirestore);
+    }
+
+    @Singleton
+    @Provides
+    public QuizWordRepository provideQuizWordRepository(FirebaseFirestore firebaseFirestore) {
+        return new QuizWordRepositoryImpl(firebaseFirestore);
     }
 
     @Singleton
@@ -31,19 +40,7 @@ public class AppModule {
 
     @Singleton
     @Provides
-    public FirebaseFirestore provideFirebaseFirestore(){
+    public FirebaseFirestore provideFirebaseFirestore() {
         return FirebaseFirestore.getInstance();
-    }
-
-    @Singleton
-    @Provides
-    public LoginViewModel provideLoginViewModel(UserRepository userRepository) {
-        return new LoginViewModel(userRepository);
-    }
-
-    @Singleton
-    @Provides
-    public String provideTestString() {
-        return "This is an injected test string";
     }
 }

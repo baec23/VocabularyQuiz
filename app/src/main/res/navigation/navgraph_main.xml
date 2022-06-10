@@ -2,25 +2,24 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navgraph_main"
-    app:startDestination="@id/loginFragment">
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.baec.vocabularyquiz.login.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
-    </fragment>
+        android:id="@+id/nav_home"
+        android:name="com.baec.vocabularyquiz.main.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.baec.vocabularyquiz.login.RegisterFragment"
-        android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register">
-        <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
+        android:id="@+id/nav_addWord"
+        android:name="com.baec.vocabularyquiz.main.ui.addword.AddWordFragment"
+        android:label="@string/menu_addword"
+        tools:layout="@layout/fragment_addword" />
+
+    <fragment
+        android:id="@+id/nav_playQuiz"
+        android:name="com.baec.vocabularyquiz.main.ui.playquiz.PlayQuizFragment"
+        android:label="@string/menu_playquiz"
+        tools:layout="@layout/fragment_playquiz" />
 </navigation>

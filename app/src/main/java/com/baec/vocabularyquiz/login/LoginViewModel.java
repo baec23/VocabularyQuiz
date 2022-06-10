@@ -3,11 +3,8 @@ package com.baec.vocabularyquiz.login;
 import static com.baec.vocabularyquiz.util.InputValidator.isPasswordValid;
 import static com.baec.vocabularyquiz.util.InputValidator.isUsernameValid;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.baec.vocabularyquiz.R;
 import com.baec.vocabularyquiz.repository.UserRepository;
@@ -22,6 +19,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class LoginViewModel extends ToastMessageViewModel {
     private UserRepository userRepository;
 
+    private MutableLiveData<Boolean> loggedIn = new MutableLiveData<>(false);
     private MutableLiveData<Integer> usernameErrorMessageStringId = new MutableLiveData<>();
     private MutableLiveData<Integer> passwordErrorMessageStringId = new MutableLiveData<>();
     private MutableLiveData<Boolean> validationOkay = new MutableLiveData<>(false);
@@ -37,11 +35,11 @@ public class LoginViewModel extends ToastMessageViewModel {
     public void onLoginButtonPressed() {
         userRepository.tryLogin(username, password, callbackResult -> {
             if (callbackResult instanceof Result.Success) {
-                Log.d("DEBUG", "LOGIN SUCCESS");
                 toastMessage.postValue(new ViewModelToastMessage(ViewModelToastMessage.Type.MESSAGE, R.string.message_loginSuccessful));
+                loggedIn.postValue(true);
             } else {
-                Log.d("DEBUG", "LOGIN FAIL");
                 toastMessage.postValue(new ViewModelToastMessage(ViewModelToastMessage.Type.ERROR, R.string.message_loginFailed));
+                loggedIn.postValue(false);
             }
         });
     }
@@ -82,5 +80,9 @@ public class LoginViewModel extends ToastMessageViewModel {
 
     public LiveData<Boolean> getValidationOkay() {
         return validationOkay;
+    }
+
+    public LiveData<Boolean> isLoggedIn() {
+        return loggedIn;
     }
 }

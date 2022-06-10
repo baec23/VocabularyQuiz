@@ -6,13 +6,18 @@
     <string name="label_username">유저ID</string>
     <string name="label_password">비밀번호</string>
     <string name="label_password2">비밀번호 다시</string>
+    <string name="label_quizWord">추가 할 단어</string>
+    <string name="label_quizWordAnswer">정답</string>
     <!--Button-->
     <string name="button_login">로그인</string>
     <string name="button_register">신규 가입</string>
+    <string name="button_addWord">단어 추가</string>
     <!--Hint-->
     <string name="hint_username">유저ID</string>
     <string name="hint_password">비밀번호</string>
     <string name="hint_password2">비밀번호 다시</string>
+    <string name="hint_quizWord">추가 할 단어</string>
+    <string name="hint_quizWordAnswer">정답</string>
     <!--Message-->
     <string name="message_loginSuccessful">로그인 성공!</string>
     <string name="message_loginFailed">로그인 실패!</string>
@@ -23,4 +28,15 @@
     <string name="message_registrationSuccessful">가입 선공</string>
     <string name="errorMessage_registration">가입 실패</string>
 
+    <string name="title_activity_game">GameActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_addword">Add Word</string>
+    <string name="menu_playquiz">Play Quiz</string>
 </resources>

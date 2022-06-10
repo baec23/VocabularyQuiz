@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/activity_game.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/activity_login.xml" value="0.254981884057971" />
         <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/activity_main.xml" value="0.21693840579710144" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/content_game.xml" value="0.14375" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/fragment_addword.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/fragment_login.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/fragment_quiz.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/fragment_register.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/layout/obj_quizanswer.xml" value="0.5" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/menu/activity_main_drawer.xml" value="0.30052083333333335" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/VocabularyQuiz/app/src/main/res/menu/game.xml" value="0.30052083333333335" />
       </map>
     </option>
   </component>

@@ -5,13 +5,18 @@
     <string name="label_username">Username</string>
     <string name="label_password">Password</string>
     <string name="label_password2">Password Again</string>
+    <string name="label_quizWord">Word to Add</string>
+    <string name="label_quizWordAnswer">Answer</string>
     <!--Button-->
     <string name="button_login">Login</string>
     <string name="button_register">Register</string>
+    <string name="button_addWord">Add Word</string>
     <!--Hint-->
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
     <string name="hint_password2">Password Again</string>
+    <string name="hint_quizWord">Word to add</string>
+    <string name="hint_quizWordAnswer">Answer</string>
     <!--Message-->
     <string name="message_loginSuccessful">Login Successful!</string>
     <string name="message_loginFailed">Login Failed!</string>
@@ -21,5 +26,17 @@
     <string name="errorMessage_password2Validation">Password does not match!</string>
     <string name="message_registrationSuccessful">Registration Successful</string>
     <string name="errorMessage_registration">Registration Failed</string>
+
+    <string name="title_activity_game">GameActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_addword">Add Word</string>
+    <string name="menu_playquiz">Play Quiz</string>
 
 </resources>

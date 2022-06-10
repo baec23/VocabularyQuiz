@@ -1,9 +1,9 @@
 package com.baec.vocabularyquiz.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +16,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavHostController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.baec.vocabularyquiz.R;
 import com.baec.vocabularyquiz.databinding.FragmentLoginBinding;
+import com.baec.vocabularyquiz.main.MainActivity;
 import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 
 import dagger.hilt.android.AndroidEntryPoint;

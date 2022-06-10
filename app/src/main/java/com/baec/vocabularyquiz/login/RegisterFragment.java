@@ -21,6 +21,9 @@ import com.baec.vocabularyquiz.R;
 import com.baec.vocabularyquiz.databinding.FragmentRegisterBinding;
 import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class RegisterFragment extends Fragment {
 
     private RegisterViewModel registerViewModel;
@@ -39,7 +42,7 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        registerViewModel = new ViewModelProvider(requireActivity()).get(RegisterViewModel.class);
+        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
         navController = NavHostFragment.findNavController(this);
     }
 
@@ -61,7 +64,7 @@ public class RegisterFragment extends Fragment {
             if (registrationStatus.getStatus() == RegistrationStatus.Status.SUCCESS) {
                 navController.navigate(R.id.action_registerFragment_to_loginFragment);
             } else {
-
+                bt_register.setEnabled(true);
             }
         });
 
@@ -97,7 +100,10 @@ public class RegisterFragment extends Fragment {
         //endregion
 
         //region OnClickListeners
-        bt_register.setOnClickListener(v -> registerViewModel.onRegisterButtonPressed());
+        bt_register.setOnClickListener(v -> {
+            registerViewModel.onRegisterButtonPressed();
+            bt_register.setEnabled(false);
+        });
         //endregion
 
         return binding.getRoot();
