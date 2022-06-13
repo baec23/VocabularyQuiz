@@ -12,6 +12,7 @@
     <string name="button_login">로그인</string>
     <string name="button_register">신규 가입</string>
     <string name="button_addWord">단어 추가</string>
+    <string name="button_next">다음</string>
     <!--Hint-->
     <string name="hint_username">유저ID</string>
     <string name="hint_password">비밀번호</string>

@@ -1,4 +1,4 @@
-package com.baec.vocabularyquiz.repository;
+package com.baec.vocabularyquiz.repository.quizword;
 
 import static com.baec.vocabularyquiz.util.Constants.QUIZWORD_COLLECTION_NAME;
 
@@ -6,7 +6,9 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.baec.vocabularyquiz.model.WordAnswer;
 import com.baec.vocabularyquiz.model.QuizWord;
+import com.baec.vocabularyquiz.repository.RepositoryCallback;
 import com.baec.vocabularyquiz.util.Result;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -15,8 +17,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class QuizWordRepositoryImpl implements QuizWordRepository {
     FirebaseFirestore firebaseFirestore;
@@ -31,21 +35,22 @@ public class QuizWordRepositoryImpl implements QuizWordRepository {
 
     @Override
     public QuizWord getRandomQuizWord() {
-        Random r = new Random(quizWords.size());
-        return quizWords.get(r.nextInt());
+        Random r = new Random();
+        return quizWords.get(r.nextInt(quizWords.size()));
     }
 
     @Override
-    public List<String> getAnswers(QuizWord quizWord, int numTotalAnswers) {
-        List<String> toReturn = new ArrayList<>();
-        toReturn.add(quizWord.getAnswer());
-        int numAnswers = 1;
-        Random r = new Random(potentialAnswers.size());
-        while (numAnswers < numTotalAnswers) {
-            String answer = potentialAnswers.get(r.nextInt());
-            if (!answer.equals(quizWord.getAnswer())) {
-                numAnswers++;
-                toReturn.add(answer);
+    public List<WordAnswer> getAnswers(QuizWord quizWord, int numTotalAnswers) {
+        List<WordAnswer> toReturn = new ArrayList<>();
+        toReturn.add(new WordAnswer(quizWord.getAnswer(), WordAnswer.AnswerGuessState.NOT_GUESSED));
+        Random r = new Random();
+        Set<String> answerSet = new HashSet<>();
+        answerSet.add(quizWord.getAnswer());
+        while (answerSet.size() < numTotalAnswers) {
+            String answer = potentialAnswers.get(r.nextInt(potentialAnswers.size()));
+            if (!answerSet.contains(answer)) {
+                toReturn.add(new WordAnswer(answer, WordAnswer.AnswerGuessState.NOT_GUESSED));
+                answerSet.add(answer);
             }
         }
         return toReturn;
@@ -62,7 +67,7 @@ public class QuizWordRepositoryImpl implements QuizWordRepository {
         });
     }
 
-    public void loadQuizWords() {
+    public void init() {
         firebaseFirestore.collection(QUIZWORD_COLLECTION_NAME).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -83,7 +88,7 @@ public class QuizWordRepositoryImpl implements QuizWordRepository {
         });
     }
 
-    public LiveData<Boolean> isWordsLoaded() {
+    public LiveData<Boolean> isLoaded() {
         return wordsLoaded;
     }
 }

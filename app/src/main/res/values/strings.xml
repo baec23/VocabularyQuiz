@@ -11,6 +11,7 @@
     <string name="button_login">Login</string>
     <string name="button_register">Register</string>
     <string name="button_addWord">Add Word</string>
+    <string name="button_next">Next</string>
     <!--Hint-->
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>

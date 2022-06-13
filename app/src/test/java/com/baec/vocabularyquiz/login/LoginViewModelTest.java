@@ -3,9 +3,8 @@ package com.baec.vocabularyquiz.login;
 import static com.google.common.truth.Truth.assertThat;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
-import androidx.lifecycle.ViewModel;
 
-import com.baec.vocabularyquiz.repository.UserRepositoryTestImpl;
+import com.baec.vocabularyquiz.repository.user.UserRepositoryTestImpl;
 import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 
 import org.junit.Before;

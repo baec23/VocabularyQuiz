@@ -21,5 +21,5 @@
         android:id="@+id/nav_playQuiz"
         android:name="com.baec.vocabularyquiz.main.ui.playquiz.PlayQuizFragment"
         android:label="@string/menu_playquiz"
-        tools:layout="@layout/fragment_playquiz" />
+        tools:layout="@layout/fragment_quiz" />
 </navigation>

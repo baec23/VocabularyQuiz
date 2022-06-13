@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.baec.vocabularyquiz.model.QuizWord;
-import com.baec.vocabularyquiz.repository.QuizWordRepository;
-import com.baec.vocabularyquiz.repository.RepositoryCallback;
+import com.baec.vocabularyquiz.repository.quizword.QuizWordRepository;
 import com.baec.vocabularyquiz.util.Result;
 
 import javax.inject.Inject;

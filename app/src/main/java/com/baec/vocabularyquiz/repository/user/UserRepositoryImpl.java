@@ -1,8 +1,9 @@
-package com.baec.vocabularyquiz.repository;
+package com.baec.vocabularyquiz.repository.user;
 
 import static com.baec.vocabularyquiz.util.Constants.USER_COLLECTION_NAME;
 
 import com.baec.vocabularyquiz.model.User;
+import com.baec.vocabularyquiz.repository.RepositoryCallback;
 import com.baec.vocabularyquiz.util.Result;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

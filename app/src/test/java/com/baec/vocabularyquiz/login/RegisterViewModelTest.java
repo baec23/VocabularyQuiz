@@ -4,7 +4,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
-import com.baec.vocabularyquiz.repository.UserRepositoryTestImpl;
+import com.baec.vocabularyquiz.repository.user.UserRepositoryTestImpl;
 
 import org.junit.Before;
 import org.junit.Rule;

@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.baec.vocabularyquiz.R;
-import com.baec.vocabularyquiz.repository.UserRepository;
+import com.baec.vocabularyquiz.repository.user.UserRepository;
 import com.baec.vocabularyquiz.util.Result;
 import com.baec.vocabularyquiz.util.ViewModelToastMessage;
 

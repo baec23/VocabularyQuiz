@@ -1,6 +1,7 @@
-package com.baec.vocabularyquiz.repository;
+package com.baec.vocabularyquiz.repository.user;
 
 import com.baec.vocabularyquiz.model.User;
+import com.baec.vocabularyquiz.repository.RepositoryCallback;
 import com.baec.vocabularyquiz.util.Result;
 
 public class UserRepositoryTestImpl implements UserRepository {

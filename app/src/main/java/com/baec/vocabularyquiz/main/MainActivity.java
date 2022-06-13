@@ -5,7 +5,9 @@ import android.view.Menu;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -13,20 +15,41 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.baec.vocabularyquiz.R;
 import com.baec.vocabularyquiz.databinding.ActivityMainBinding;
+import com.baec.vocabularyquiz.repository.quizword.QuizWordRepository;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
+    @Inject
+    public QuizWordRepository quizWordRepository;
+
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
+        quizWordRepository.init();
+        quizWordRepository.isLoaded().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isLoaded) {
+                if (isLoaded) {
+                    splashScreen.setKeepOnScreenCondition(new SplashScreen.KeepOnScreenCondition() {
+                        @Override
+                        public boolean shouldKeepOnScreen() {
+                            return false;
+                        }
+                    });
+                }
+            }
+        });
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

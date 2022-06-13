@@ -1,14 +1,12 @@
 package com.baec.vocabularyquiz.di;
 
-import com.baec.vocabularyquiz.repository.QuizWordRepository;
-import com.baec.vocabularyquiz.repository.QuizWordRepositoryImpl;
-import com.baec.vocabularyquiz.repository.UserRepository;
-import com.baec.vocabularyquiz.repository.UserRepositoryImpl;
-import com.baec.vocabularyquiz.repository.UserRepositoryTestImpl;
+import com.baec.vocabularyquiz.repository.quizword.QuizWordRepository;
+import com.baec.vocabularyquiz.repository.quizword.QuizWordRepositoryImpl;
+import com.baec.vocabularyquiz.repository.user.UserRepository;
+import com.baec.vocabularyquiz.repository.user.UserRepositoryImpl;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;

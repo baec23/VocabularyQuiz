@@ -1,6 +1,10 @@
-package com.baec.vocabularyquiz.repository;
+package com.baec.vocabularyquiz.repository.quizword;
 
+import androidx.lifecycle.LiveData;
+
+import com.baec.vocabularyquiz.model.WordAnswer;
 import com.baec.vocabularyquiz.model.QuizWord;
+import com.baec.vocabularyquiz.repository.RepositoryCallback;
 import com.baec.vocabularyquiz.util.Result;
 
 import java.util.ArrayList;
@@ -16,7 +20,7 @@ public class QuizWordRepositoryTestImpl implements QuizWordRepository {
     }
 
     @Override
-    public List<String> getAnswers(QuizWord quizWord, int numTotalAnswers) {
+    public List<WordAnswer> getAnswers(QuizWord quizWord, int numTotalAnswers) {
         return null;
     }
 
@@ -36,5 +40,10 @@ public class QuizWordRepositoryTestImpl implements QuizWordRepository {
        potentialAnswers.add("testAnswer3");
        potentialAnswers.add("testAnswer4");
        potentialAnswers.add("testAnswer5");
+    }
+
+    @Override
+    public LiveData<Boolean> isLoaded() {
+        return null;
     }
 }
